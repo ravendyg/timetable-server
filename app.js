@@ -9,6 +9,7 @@ const scheduler = require('./lib/services/scheduler');
 
 // var routes = require('./routes/index');
 // var users = require('./routes/users');
+const sync = require('./routes/sync');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', routes);
 // app.use('/users', users);
+app.use('/sync', sync);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next)
