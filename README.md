@@ -33,6 +33,7 @@ response:
 	group?: string,
 	person?: string,
 	fullName?: string,
+	day: number,
 	status: false				// is it exists
 } []
 ```
