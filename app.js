@@ -72,7 +72,3 @@ app.use(
 );
 
 module.exports = app;
-
-
-// logic initialization
-scheduler.start();
