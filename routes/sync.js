@@ -20,7 +20,26 @@ router.get(
 			var timestamp = req.query.timestamp || 0;
 			db.getAfterThisTime( req.query.time, timestamp )
 			.then(
-				changes => res.json(changes)
+				longChanges =>
+				{
+					var changes =
+						longChanges
+						.map(
+							e =>
+							({
+								d: e.day,
+								p: e.place,
+								n: e.name,
+								g: e.group,
+								pn: e.person,
+								pi: e.personId,
+								f: e.fullName,
+								s: e.status,
+								ts: e.timestamp
+							})
+						);
+					res.json(changes);
+				}
 			)
 			.catch(
 				err => next( errServ.wrapError( err, '', 'fetching updated for a user' ) )

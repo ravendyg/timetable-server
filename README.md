@@ -27,13 +27,14 @@ time      - lesson time (to reduce query response size)
 
 response:
 {
-	time: string,
-	place: string,
-	name?: string,
-	group?: string,
-	person?: string,
-	fullName?: string,
-	day: number,
-	status: false				// is it exists
+	d: number,           // day
+	p: string,           // place
+	n?: string,          // name
+	g?: string,          // group
+	pn?: string,         // person
+	pi?: number,         // person id
+	f?: string,          // full name
+	s: boolean,				   // is it exists
+	ts: number           // timestamp when modified
 } []
 ```
