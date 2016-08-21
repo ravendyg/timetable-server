@@ -23,7 +23,7 @@ npm start			// development
 GET /sync?timestamp=..&time=..
 
 timestamp - time of last synchronization (0 - never before)
-time			- lessont time (to reduce query response size)
+time      - lesson time (to reduce query response size)
 
 response:
 {
