@@ -34,7 +34,7 @@ response:
 	pn?: string,         // person
 	pi?: number,         // person id
 	f?: string,          // full name
-	s: boolean,				   // is it exists
+	s: number,				   // is it exists
 	ts: number           // timestamp when modified
 } []
 ```
