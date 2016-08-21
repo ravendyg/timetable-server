@@ -38,7 +38,7 @@ router.get(
 								ts: e.timestamp
 							})
 						);
-					res.json(changes);
+					res.json({changes});
 				}
 			)
 			.catch(
