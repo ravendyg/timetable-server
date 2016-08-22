@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
+const config = require('../lib/config');
 const db = require('../lib/services/db');
 const errServ = require('../lib/services/error');
 
@@ -17,7 +18,7 @@ router.get(
 		}
 		else
 		{
-			var timestamp = req.query.timestamp || 0;
+			var timestamp = +req.query.timestamp || 0;
 			db.getAfterThisTime( req.query.time, timestamp )
 			.then(
 				longChanges =>
@@ -38,7 +39,11 @@ router.get(
 								ts: e.timestamp
 							})
 						);
-					res.json({changes});
+
+					res.json({
+						changes,
+						flag: Date.now() - config.CRITICAL_TIME_DIFFERENCE > timestamp * 1000 ? 'new' : 'upd'
+					});
 				}
 			)
 			.catch(
