@@ -18,7 +18,7 @@ router.get(
 		}
 		else
 		{
-			var timestamp = +req.query.timestamp || 0;
+			var timestamp = Math.round( (+req.query.timestamp) / 1000 ) || 0;
 			db.getAfterThisTime( req.query.time, timestamp )
 			.then(
 				longChanges =>
@@ -42,7 +42,7 @@ router.get(
 
 					res.json({
 						changes,
-						flag: Date.now() - config.CRITICAL_TIME_DIFFERENCE > timestamp * 1000 ? 'new' : 'upd'
+						flag: Date.now() - config.CRITICAL_TIME_DIFFERENCE > timestamp ? 'new' : 'upd'
 					});
 				}
 			)
