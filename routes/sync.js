@@ -32,6 +32,7 @@ router.get(
 								p: e.place,
 								n: e.name,
 								g: e.group,
+								ps: e.position,
 								pn: e.person,
 								pi: e.personId,
 								f: e.fullName,
