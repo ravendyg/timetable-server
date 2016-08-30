@@ -28,6 +28,7 @@ time      - lesson time (to reduce query response size)
 response:
 {
 	d: number,           // day
+	t: string,           // time
 	p: string,           // place
 	n?: string,          // name
 	g?: string,          // group
