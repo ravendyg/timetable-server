@@ -28,7 +28,7 @@ router.get(
 							t: e.time,
 							p: e.place,
 							n: e.name,
-							g: e.group,
+							g: e.group_name,
 							ps: e.position,
 							pn: e.person,
 							pi: e.personId,

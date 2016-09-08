@@ -31,7 +31,7 @@ response:
 	t: string,           // time
 	p: string,           // place
 	n?: string,          // name
-	g?: string,          // group
+	g?: string,          // group_name
 	ps?: number,         // position: 0 - every week, 1 - every uneven, 2 - every even
 	pn?: string,         // person
 	pi?: number,         // person id
