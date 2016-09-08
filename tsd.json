@@ -31,6 +31,9 @@
     },
     "promise/promise.d.ts": {
       "commit": "2a24bbb7ca4f13e52c7f6a0ab6144b565bf1ef55"
+    },
+    "bluebird/bluebird.d.ts": {
+      "commit": "01a3adcdb6c2626e9c9fc340813d6f489116594d"
     }
   }
 }

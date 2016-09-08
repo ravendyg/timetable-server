@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bluebird": "3.4.6",
     "body-parser": "1.15.1",
     "cheerio": "0.20.0",
     "cookie-parser": "1.4.3",
@@ -13,8 +14,8 @@
     "express": "4.13.4",
     "iconv": "2.2.1",
     "jade": "1.11.0",
-    "mongodb": "2.2.5",
     "morgan": "1.7.0",
+    "mysql": "2.11.1",
     "serve-favicon": "2.3.0",
     "socks5-http-client": "1.0.2"
   },
