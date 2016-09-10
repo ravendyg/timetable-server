@@ -23,19 +23,23 @@ router.get(
 					longChanges
 					.map(
 						e =>
-						({
-							d: e.day,
-							t: e.time,
-							p: e.place,
-							n: e.name,
-							g: e.group_name,
-							ps: e.position,
-							pn: e.person,
-							pi: e.personId,
-							f: e.fullName,
-							s: e.status,
-							ts: e.timestamp
-						})
+						{
+							var out =
+							{
+								d: e.day,
+								t: e.time,
+								p: e.place,
+								n: e.lesson_name,
+								g: e.group_name,
+								ps: e.position,
+								pn: e.person_name,
+								pi: e.person,
+								f: e.full_name,
+								s: e.status,
+								ts: e.timestamp
+							};
+							return out;
+						}
 					);
 
 				res.json({
