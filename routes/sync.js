@@ -44,7 +44,7 @@ router.get(
 
 				res.json({
 					changes,
-					flag: Date.now() - config.CRITICAL_TIME_DIFFERENCE > timestamp ? 'new' : 'upd'
+					flag: Date.now() - config.CRITICAL_TIME_DIFFERENCE > timestamp * 1000 ? 'new' : 'upd'
 				});
 			}
 		)
