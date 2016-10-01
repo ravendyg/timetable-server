@@ -14,7 +14,7 @@ router.get(
 	{
 		console.log(req.headers['x-real-ip']);
 
-		var timestamp = Math.round( (+req.query.timestamp) / 1000 ) || 0;
+		var timestamp = Math.round( (+req.query.timestamp) / 1000 - 60*65 ) || 0;
 		db.getAfterThisTime( timestamp, req.query.time )
 		.then(
 			longChanges =>
