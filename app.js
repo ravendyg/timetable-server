@@ -83,3 +83,5 @@ app.use(
 );
 
 module.exports = app;
+
+scheduler.start();
