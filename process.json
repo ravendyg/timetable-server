@@ -1,0 +1,19 @@
+{
+  "apps" :
+  [
+    {
+      "name"          : "timetable",
+      "script"        : "./bin/www",
+      "watch"         : false,
+      "ignore_watch"  : [".git", "node_modules", "private", "public", "test-dumps", "tests", "typings"],
+      "env":
+      {
+        "NODE_ENV"    : "development"
+      },
+      "env_production":
+      {
+        "NODE_ENV"    : "production"
+      }
+    }
+  ]
+}
