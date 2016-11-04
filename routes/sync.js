@@ -14,8 +14,17 @@ router.get(
 	{
 		console.log(req.headers['x-real-ip']);
 
-		var timestamp = Math.round( (+req.query.timestamp) / 1000 ) || 0;
-		db.getAfterThisTime( timestamp, req.query.time )
+    let timestamp = Math.round( (+req.query.timestamp) / 1000 ) || 0;
+
+    let flag =
+      ( Date.now() - config.CRITICAL_TIME_DIFFERENCE > timestamp * 1000 ||
+        timestamp < config.RESET_TIMESTAMP
+      )
+      ? 'new'
+      : 'upd'
+      ;
+
+		db.getAfterThisTime( flag === 'new' ? 0 : timestamp, req.query.time )
 		.then(
 			longChanges =>
 			{
@@ -42,10 +51,7 @@ router.get(
 						}
 					);
 
-				res.json({
-					changes,
-					flag: Date.now() - config.CRITICAL_TIME_DIFFERENCE > timestamp * 1000 ? 'new' : 'upd'
-				});
+				res.json({ changes, flag });
 			}
 		)
 		.catch(
