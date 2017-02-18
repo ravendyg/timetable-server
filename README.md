@@ -1,13 +1,13 @@
 ## Global dependencies
 ```
-node > 4.0 (5.12 used)
-tsd
+node 6.9.5
+
+swagger
 ```
 
 ## Set up
 ```
 npm i
-tsd install
 ```
 
 ## Run
