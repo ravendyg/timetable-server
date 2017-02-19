@@ -1,9 +1,11 @@
 'use strict';
 
-var express = require('express');
-var router = new express.Router();
+const express = require('express');
+const router = new express.Router();
+const assert = require('assert');
 
 const crawler = require('../lib/services/crawler');
+const utils = require('../lib/services/utils');
 
 
 router.get(
@@ -23,15 +25,18 @@ router.get(
 );
 
 router.get(
-  '/sync/groups',
+  '/sync/:type',
   (req, res) =>
   {
-    let info = crawler.getGroups(req.query.tsp, req.query.groupName);
-    if (info)
+    let info;
+    let action = 'get' + utils.capitalizeFirstLetter(req.params.type);
+    try
     {
+      info = crawler[action](req.query.tsp, req.query.name);
+      assert(info !== null);
       res.json(info);
     }
-    else
+    catch (err)
     {
       res.status(404).send();
     }
