@@ -6,6 +6,7 @@ const assert = require('assert');
 
 const crawler = require('../lib/services/crawler');
 const utils = require('../lib/services/utils');
+const config = require('../lib/config');
 
 
 router.get(
@@ -28,13 +29,12 @@ router.get(
   '/sync/:type',
   (req, res) =>
   {
-    let info;
-    let action = 'get' + utils.capitalizeFirstLetter(req.params.type);
     try
     {
-      info = crawler[action](req.query.tsp, req.query.name);
+      let drop = req.query.tsp < config.DROP_CACHE_AFTER; // use to force cache drop when smth changed
+      let info = crawler.syncData(req.params.type, drop ? 0 : req.query.tsp, req.query.id);
       assert(info !== null);
-      res.json(info);
+      res.json({info, drop});
     }
     catch (err)
     {
