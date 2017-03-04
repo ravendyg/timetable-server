@@ -5,7 +5,6 @@ const router = new express.Router();
 const assert = require('assert');
 
 const crawler = require('../lib/services/crawler');
-const utils = require('../lib/services/utils');
 const config = require('../lib/config');
 
 
@@ -31,10 +30,17 @@ router.get(
   {
     try
     {
-      let drop = req.query.tsp < config.DROP_CACHE_AFTER; // use to force cache drop when smth changed
-      let info = crawler.syncData(req.params.type, drop ? 0 : req.query.tsp, req.query.id);
+      let info = crawler.syncData(req.params.type, +req.query.tsp, req.query.id);
       assert(info !== null);
-      res.json({info, drop});
+      if (info.length > 0)
+      {
+        info[0].tsp = Date.now();
+        res.json(info[0]);
+      }
+      else
+      {
+        res.send();
+      }
     }
     catch (err)
     {

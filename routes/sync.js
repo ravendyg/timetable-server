@@ -14,17 +14,16 @@ router.get(
 	{
 		console.log(req.headers['x-real-ip']);
 
-    let timestamp = Math.round( (+req.query.timestamp) / 1000 ) || 0;
+    let timestamp = Math.round((+req.query.timestamp) / 1000 ) || 0;
 
     let flag =
-      ( Date.now() - config.CRITICAL_TIME_DIFFERENCE > timestamp * 1000 ||
+      Date.now() - config.CRITICAL_TIME_DIFFERENCE > timestamp * 1000 ||
         timestamp < config.RESET_TIMESTAMP
-      )
       ? 'new'
       : 'upd'
       ;
 
-		db.getAfterThisTime( flag === 'new' ? 0 : timestamp, req.query.time )
+		db.getAfterThisTime(flag === 'new' ? 0 : timestamp, req.query.time )
 		.then(
 			longChanges =>
 			{
@@ -55,7 +54,7 @@ router.get(
 			}
 		)
 		.catch(
-			err => next( errServ.wrapError( err, '', 'fetching updated for a user' ) )
+			err => next(errServ.wrapError(err, '', 'fetching updated for a user'))
 		)
 		;
 	}
