@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const router = express.Router();
+const router = new express.Router();
 
 const config = require('../lib/config');
 const db = require('../lib/services/db');
