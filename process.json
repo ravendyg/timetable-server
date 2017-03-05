@@ -2,7 +2,7 @@
   "apps" :
   [
     {
-      "name"          : "timetable",
+      "name"          : "timetable2",
       "script"        : "./bin/www",
       "watch"         : false,
       "ignore_watch"  : [".git", "node_modules", "private", "public", "test-dumps", "tests", "typings"],

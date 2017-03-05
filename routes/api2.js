@@ -5,7 +5,6 @@ const router = new express.Router();
 const assert = require('assert');
 
 const crawler = require('../lib/services/crawler');
-const config = require('../lib/config');
 
 
 router.get(
