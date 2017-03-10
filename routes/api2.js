@@ -11,6 +11,12 @@ const mapsDb = require('../lib/storage/maps');
 const namesDb = require('../lib/storage/names');
 const aliasesDb = require('../lib/storage/aliases');
 
+router.use(function log(req, res, next)
+{
+  console.log(req.headers['x-real-ip']);
+  next();
+})
+
 
 router.get(
   '/lists',
