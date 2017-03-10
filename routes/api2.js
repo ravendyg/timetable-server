@@ -84,8 +84,7 @@ router.put(
         ['teachers', 'places'].indexOf(req.body.type) !== -1 && crawler.syncData(req.body.type, 0, req.body.id.replace(/\./g, '')).length > 0) ||
         !req.body.alias)
     {
-      res.statusCode(400);
-      res.end();
+      res.status(400).end();
     }
     else
     {
